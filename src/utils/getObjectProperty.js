@@ -1,12 +1,15 @@
 const getObjectProperty = (obj, path, defaultValue) => {
+  const checkForDefaultValue = value =>
+    value !== undefined ? value : undefined;
+
   if (path === undefined) {
     return obj;
   }
   try {
-    return path.split('.').reduce((o, i) => o[i], obj);
+    const value = path.split('.').reduce((o, i) => o[i], obj);
+    return value !== undefined ? value : checkForDefaultValue(defaultValue);
   } catch (e) {
-    if (e instanceof TypeError)
-      return defaultValue !== undefined ? defaultValue : undefined;
+    if (e instanceof TypeError) return checkForDefaultValue(defaultValue);
     throw e;
   }
 };
