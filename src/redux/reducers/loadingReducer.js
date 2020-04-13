@@ -1,7 +1,6 @@
-import { START_LOADING, DONE_LOADING } from "../types";
-import lodash from "lodash";
+import { START_LOADING, DONE_LOADING } from '../types';
 
-const initialState = {
+export const initialState = {
   loadingRequests: [],
 };
 
@@ -31,10 +30,8 @@ const addRequest = (requestName, listOfLoadingRequest) => {
 };
 
 const removeRequest = (requestName, listOfLoadingRequest) => {
-  if (listOfLoadingRequest.includes(requestName)) return listOfLoadingRequest;
-  return lodash.remove(
-    [...listOfLoadingRequest],
-    requestNameInList => requestNameInList == requestName
+  return listOfLoadingRequest.filter(
+    requestNameInList => requestNameInList != requestName
   );
 };
 

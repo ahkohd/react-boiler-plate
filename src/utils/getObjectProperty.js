@@ -3,7 +3,7 @@ const getObjectProperty = (obj, path, defaultValue) => {
     return obj;
   }
   try {
-    return path.split(".").reduce((o, i) => o[i], obj);
+    return path.split('.').reduce((o, i) => o[i], obj);
   } catch (e) {
     if (e instanceof TypeError)
       return defaultValue !== undefined ? defaultValue : undefined;
