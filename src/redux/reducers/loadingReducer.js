@@ -31,7 +31,7 @@ const addRequest = (requestName, listOfLoadingRequest) => {
 
 const removeRequest = (requestName, listOfLoadingRequest) => {
   return listOfLoadingRequest.filter(
-    requestNameInList => requestNameInList != requestName
+    requestNameInList => requestNameInList !== requestName
   );
 };
 
