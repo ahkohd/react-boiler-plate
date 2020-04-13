@@ -1,5 +1,5 @@
 import loadingReducer, {
-  initialState,
+  loadingInitialState,
 } from '../../../src/redux/reducers/loadingReducer';
 
 import {
@@ -9,11 +9,13 @@ import {
 
 describe('loading reducer', () => {
   it('should return the initial state', () => {
-    expect(loadingReducer(undefined, {})).toBe(initialState);
+    expect(loadingReducer(undefined, {})).toBe(loadingInitialState);
   });
 
   it('should handle START_LOADING', () => {
-    expect(loadingReducer(initialState, _startLoading('sign_in'))).toEqual({
+    expect(
+      loadingReducer(loadingInitialState, _startLoading('sign_in'))
+    ).toEqual({
       loadingRequests: ['sign_in'],
     });
   });
@@ -21,7 +23,10 @@ describe('loading reducer', () => {
   it('should handle DONE_LOADING', () => {
     expect(
       loadingReducer(
-        { ...initialState, loadingRequests: ['sign_in', 'activating_account'] },
+        {
+          ...loadingInitialState,
+          loadingRequests: ['sign_in', 'activating_account'],
+        },
         _doneLoading('sign_in')
       )
     ).toEqual({

@@ -1,10 +1,10 @@
 import { START_LOADING, DONE_LOADING } from '../types';
 
-export const initialState = {
+export const loadingInitialState = {
   loadingRequests: [],
 };
 
-const loadingReducer = (state = initialState, action) => {
+const loadingReducer = (state = loadingInitialState, action) => {
   switch (action.type) {
     case START_LOADING:
       return {
